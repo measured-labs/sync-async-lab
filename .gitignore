@@ -1,0 +1,36 @@
+# Design docs (local only)
+docs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# Java
+*.class
+*.jar
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Go
+go-server/go-server
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.swp
+
+# Docker
+.docker/
+
+# k6 results (raw output)
+k6/results/
+
+# OS
+.DS_Store
+Thumbs.db
