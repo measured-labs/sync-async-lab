@@ -1,0 +1,72 @@
+services:
+  python-fastapi-sync:
+    build: ./servers/python-fastapi-sync
+    ports:
+      - "8001:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  python-fastapi-async:
+    build: ./servers/python-fastapi-async
+    ports:
+      - "8002:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  python-django-sync:
+    build: ./servers/python-django-sync
+    ports:
+      - "8003:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  python-django-async:
+    build: ./servers/python-django-async
+    ports:
+      - "8004:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  python-django-async-raw:
+    build: ./servers/python-django-async-raw
+    ports:
+      - "8005:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  java-spring-mvc:
+    build: ./servers/java-spring-mvc
+    ports:
+      - "8006:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  java-spring-webflux:
+    build: ./servers/java-spring-webflux
+    ports:
+      - "8007:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  java-spring-virtual:
+    build: ./servers/java-spring-virtual
+    ports:
+      - "8008:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+
+  go-server:
+    build: ./servers/go-server
+    ports:
+      - "8009:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
