@@ -1,5 +1,6 @@
 import asyncio
 import os
+from concurrent.futures import ProcessPoolExecutor
 
 import asyncpg
 from fastapi import FastAPI
@@ -37,8 +38,18 @@ async def cpu_endpoint():
     return {"server": "fastapi-async", "type": "cpu", "fibonacci": result}
 
 
+@app.get("/cpu-mp")
+async def cpu_mp_endpoint():
+    loop = asyncio.get_event_loop()
+    result = await loop.run_in_executor(process_pool, fibonacci, 38)
+    return {"server": "fastapi-async", "type": "cpu-mp", "fibonacci": result}
+
+
 @app.get("/db")
 async def db_endpoint():
     async with db_pool.acquire() as conn:
         await conn.fetchval("SELECT pg_sleep(0.2)")
     return {"server": "fastapi-async", "type": "db", "delay_ms": 200}
+
+
+process_pool = ProcessPoolExecutor(max_workers=2)
