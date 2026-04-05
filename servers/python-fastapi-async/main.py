@@ -9,15 +9,17 @@ app = FastAPI()
 
 DB_HOST = os.environ.get("DB_HOST", "postgres")
 db_pool = None
+process_pool = None
 
 
 @app.on_event("startup")
 async def startup():
-    global db_pool
+    global db_pool, process_pool
     db_pool = await asyncpg.create_pool(
         host=DB_HOST, port=5432, database="bench", user="bench", password="bench",
         min_size=5, max_size=20
     )
+    process_pool = ProcessPoolExecutor(max_workers=2)
 
 
 def fibonacci(n: int) -> int:
@@ -50,6 +52,3 @@ async def db_endpoint():
     async with db_pool.acquire() as conn:
         await conn.fetchval("SELECT pg_sleep(0.2)")
     return {"server": "fastapi-async", "type": "db", "delay_ms": 200}
-
-
-process_pool = ProcessPoolExecutor(max_workers=2)
