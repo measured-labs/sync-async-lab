@@ -3,6 +3,8 @@ package com.benchmark;
 import java.time.Duration;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +12,9 @@ import reactor.core.publisher.Mono;
 
 @RestController
 public class BenchmarkController {
+
+    @Autowired(required = false)
+    private DatabaseClient databaseClient;
 
     @GetMapping("/io")
     public Mono<Map<String, Object>> io() {
@@ -31,6 +36,13 @@ public class BenchmarkController {
                     "fibonacci", result
             );
         });
+    }
+
+    @GetMapping("/db")
+    public Mono<Map<String, Object>> db() {
+        return databaseClient.sql("SELECT pg_sleep(0.2)")
+                .fetch().first()
+                .thenReturn(Map.of("server", "spring-webflux", "type", "db", "delay_ms", 200));
     }
 
     private long fibonacci(int n) {

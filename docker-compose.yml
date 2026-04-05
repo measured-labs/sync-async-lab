@@ -1,8 +1,30 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: bench
+      POSTGRES_PASSWORD: bench
+      POSTGRES_DB: bench
+    ports:
+      - "5432:5432"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bench"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   python-fastapi-sync:
     build: ./servers/python-fastapi-sync
     ports:
       - "8001:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -11,6 +33,11 @@ services:
     build: ./servers/python-fastapi-async
     ports:
       - "8002:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -19,6 +46,11 @@ services:
     build: ./servers/python-django-sync
     ports:
       - "8003:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -35,6 +67,11 @@ services:
     build: ./servers/python-django-async-raw
     ports:
       - "8005:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -43,6 +80,11 @@ services:
     build: ./servers/java-spring-mvc
     ports:
       - "8006:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -51,6 +93,11 @@ services:
     build: ./servers/java-spring-webflux
     ports:
       - "8007:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -59,6 +106,11 @@ services:
     build: ./servers/java-spring-virtual
     ports:
       - "8008:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
@@ -67,6 +119,11 @@ services:
     build: ./servers/go-server
     ports:
       - "8009:8080"
+    environment:
+      - DB_HOST=postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped

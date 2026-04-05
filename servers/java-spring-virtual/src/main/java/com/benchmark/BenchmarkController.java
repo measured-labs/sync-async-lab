@@ -1,12 +1,17 @@
 package com.benchmark;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
 public class BenchmarkController {
+
+    @Autowired(required = false)
+    private JdbcTemplate jdbcTemplate;
 
     @GetMapping("/io")
     public Map<String, Object> io() throws InterruptedException {
@@ -26,6 +31,12 @@ public class BenchmarkController {
             "type", "cpu",
             "fibonacci", result
         );
+    }
+
+    @GetMapping("/db")
+    public Map<String, Object> db() {
+        jdbcTemplate.execute("SELECT pg_sleep(0.2)");
+        return Map.of("server", "spring-virtual", "type", "db", "delay_ms", 200);
     }
 
     private long fibonacci(int n) {
