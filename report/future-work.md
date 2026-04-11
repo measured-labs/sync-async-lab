@@ -110,16 +110,17 @@ py-spy record -o flamegraph.svg --pid $(pgrep -f uvicorn)
 
 | # | 주제 | 난이도 | 예상 소요 | 상태 |
 |---|------|--------|----------|------|
-| 1 | Python 3.13 free-threaded (PEP 703) | 중 | 2시간 | ❌ Docker 이미지 미제공 |
+| 1 | Python 3.13 free-threaded (PEP 703) | 중 | 2시간 | ✅ 소스 빌드로 완료 |
 | 2 | Rust (Actix-web / Tokio) 서버 추가 | 중 | 3시간 | 미진행 |
 | 3 | k8s HPA 오토스케일링 비교 | 높 | 1일 | 미진행 |
 | 4 | Grafana + InfluxDB 실시간 대시보드 | 중 | 2시간 | 미진행 |
 | 5 | Connection pool 크기별 성능 곡선 (10/20/50/100) | 낮 | 1시간 | ✅ 완료 |
 | 6 | JVM warm-up 구간 별도 분석 | 낮 | 30분 | ✅ 완료 |
 
-### #1 Python 3.13 free-threaded — 미진행 사유
+### #1 Python 3.13 free-threaded — ✅ 소스 빌드로 완료
 
-- 공식 Docker Hub에 `python:3.13t` 또는 free-threaded 전용 이미지가 없음
-- 표준 python:3.13-slim은 `--disable-gil`로 컴파일되지 않아 `PYTHON_GIL=0` 설정 시 Fatal Error
-- 자체 빌드(소스 컴파일)는 가능하나 30분+ 소요 + 의존성 호환성 미보장
-- PEP 703 구현이 안정화되면 공식 이미지 출시 후 재시도 권장
+- CPython 3.13.13을 `--disable-gil --enable-optimizations --with-lto`로 소스 빌드
+- Starlette 사용 (FastAPI는 pydantic-core 미호환으로 불가)
+- **결과: ThreadPoolExecutor(2)로 CPU-bound 2.16x 향상 확인 (GIL 없이 진짜 병렬)**
+- 단, 단일 스레드 성능 ~2x 하락 (biased reference counting 오버헤드)
+- 상세: report/results-extended.md #1 섹션

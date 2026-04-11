@@ -153,3 +153,11 @@ services:
     cpus: 2.0
     mem_limit: 512m
     restart: unless-stopped
+
+  python-fastapi-freethreaded:
+    build: ./servers/python-fastapi-freethreaded
+    ports:
+      - "8012:8080"
+    cpus: 2.0
+    mem_limit: 512m
+    restart: unless-stopped
