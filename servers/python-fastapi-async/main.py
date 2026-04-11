@@ -15,9 +15,10 @@ process_pool = None
 @app.on_event("startup")
 async def startup():
     global db_pool, process_pool
+    pool_size = int(os.environ.get("POOL_SIZE", "20"))
     db_pool = await asyncpg.create_pool(
         host=DB_HOST, port=5432, database="bench", user="bench", password="bench",
-        min_size=5, max_size=20
+        min_size=min(5, pool_size), max_size=pool_size
     )
     process_pool = ProcessPoolExecutor(max_workers=2)
 

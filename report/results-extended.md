@@ -559,6 +559,121 @@ Node.js는 34MB로 Go 다음으로 효율적.
 
 ---
 
+## #5: Connection Pool 크기별 성능 곡선 — ✅ 입증 (풀 크기 ∝ 처리량)
+
+> 실험일: 2026-04-11
+> 환경: Docker (2 CPU, 512MB RAM), FastAPI async (asyncpg), pg_sleep(0.2s), 200 VU
+> k6 from 192.168.55.158 → 192.168.55.114:8002
+
+### 가설
+
+커넥션 풀 크기가 DB I/O 처리량의 상한을 직접 결정한다.
+이론적 상한 = `pool_size / query_time` = `pool_size / 0.2s`
+
+### 결과
+
+| Pool Size | req/s (실측) | avg latency | p95 | 이론적 상한 | 달성률 |
+|----------:|------------:|------------:|----:|----------:|-------:|
+| 10 | 48.7 | 3.12s | 4.26s | 50 | 97.4% |
+| 20 | 96.1 | 1.56s | 2.23s | 100 | 96.1% |
+| 50 | 230.0 | 653ms | 1.02s | 250 | 92.0% |
+| 100 | 425.0 | 353ms | 604ms | 500 | 85.0% |
+
+### 수행한 작업
+
+`servers/python-fastapi-async/main.py`에서 커넥션 풀 크기를 환경변수(`POOL_SIZE`)로 변경 가능하게 수정:
+
+```python
+pool_size = int(os.environ.get("POOL_SIZE", "20"))
+db_pool = await asyncpg.create_pool(
+    host=DB_HOST, port=5432, database="bench", user="bench", password="bench",
+    min_size=min(5, pool_size), max_size=pool_size
+)
+```
+
+Docker 컨테이너를 `POOL_SIZE=N`으로 환경변수를 주며 4회 반복 테스트.
+PostgreSQL `max_connections=100` (기본값)으로 100까지 테스트 가능.
+
+### 분석
+
+1. **풀 크기 10~50 구간에서는 이론적 상한의 92~97%를 달성** — 거의 완벽한 선형 확장
+2. **풀 100에서 달성률 85%로 하락** — 원인:
+   - PostgreSQL 서버 쪽 CPU/I/O 부하 증가 (100개 동시 세션 관리)
+   - asyncpg 커넥션 관리 오버헤드 증가
+   - Docker 2 CPU 제약으로 이벤트 루프 + 100개 커넥션 처리에 CPU 경합
+3. **avg latency는 풀이 커질수록 감소** — 큐잉 대기 시간 감소 (200 VU / pool_size = 큐 깊이)
+   - Pool 10: 200 VU / 10 커넥션 = 20 대기열 → avg 3.12s
+   - Pool 100: 200 VU / 100 커넥션 = 2 대기열 → avg 353ms
+
+### 결론
+
+**커넥션 풀 크기는 DB-bound 워크로드에서 가장 중요한 단일 튜닝 파라미터다.**
+동시성 모델(async/sync/goroutine)보다 풀 크기가 처리량을 더 직접적으로 결정한다.
+
+프로덕션 지침:
+- `pool_size ≈ expected_concurrent_db_requests`로 설정
+- PostgreSQL `max_connections`을 모든 앱 서버의 풀 합산보다 높게
+- 풀이 너무 크면 PostgreSQL 서버 부하로 역효과 (shared_buffers, work_mem 경합)
+
+---
+
+## #6: JVM Warm-up 구간 분석 — ⚠️ 관찰 미미 (CPU 절전 모드가 효과를 가림)
+
+> 실험일: 2026-04-11
+> 환경: Docker (2 CPU, 512MB RAM), Spring MVC (JVM 21), i7-13700HX (절전 모드)
+
+### 가설
+
+JVM은 콜드 스타트 후 JIT(C2) 컴파일이 완료되면서 처리 속도가 점진적으로 향상될 것이다.
+특히 CPU-bound(fibonacci)에서 초반 인터프리터 모드 → JIT 이후 빠른 실행으로 전환이 관찰될 것.
+
+### 결과
+
+콜드 스타트 직후 30번의 순차 `/cpu` 요청을 5개씩 그룹으로 나눠 평균을 측정:
+
+| 그룹 | 요청 # | avg (초) | 비고 |
+|------|--------|--------:|------|
+| 1 | 1-5 | 0.590 | 콜드 (인터프리터 + C1) |
+| 2 | 6-10 | 0.461 | **22% 빨라짐** (C2 초기 최적화) |
+| 3 | 11-15 | 0.478 | 유지 |
+| 4 | 16-20 | 0.592 | 다시 느려짐 ← **CPU 주파수 변동** |
+| 5 | 21-25 | 0.516 | 불안정 |
+| 6 | 26-30 | 0.585 | 불안정 |
+
+### 분석
+
+1. **Group 1→2에서 22% 향상**은 JIT C2 컴파일 효과로 추정
+   - fibonacci(38)은 재귀 함수로 수천만 번 호출됨 → JIT이 빠르게 핫스팟으로 감지
+   - C2 컴파일러가 인라이닝 + 레지스터 최적화를 적용한 것으로 보임
+   
+2. **Group 4에서 다시 느려지는 이유**: CPU 절전 모드(governor: powersave)
+   - i7-13700HX가 24% 클럭(~1200MHz)으로 동작
+   - 부하가 간헐적이라 CPU가 부스트 후 다시 절전으로 돌아감
+   - JIT 효과보다 CPU 주파수 변동의 영향이 더 크게 나타남
+
+3. **이 환경에서는 JIT warm-up을 깨끗하게 분리 관측할 수 없음**
+   - CPU governor를 `performance`로 설정하면 관찰 가능하지만, 시스템 설정 변경 필요
+   - Docker의 `cpus: 2.0` 제약도 가변적 CPU 타임 할당을 유발
+
+### GraalVM Native 비교 (참고)
+
+| 메트릭 | JVM (Group 2, warm) | Native (평균) |
+|--------|-------------------:|-------------:|
+| /cpu 평균 | ~0.46s | ~0.63s |
+| warm-up 필요 | 5~10회 요청 | 없음 |
+| 콜드 스타트 | 6,520ms | 346ms |
+
+Native는 warm-up 없이 즉시 일정한 성능을 보이지만, JVM은 warm-up 후 더 빠른 최적화 레벨에 도달.
+B2 결과와 일치: JVM warm 상태에서 Native보다 ~20-25% 빠름.
+
+### 결론
+
+- JIT warm-up 효과는 존재하나 (첫 5개 요청 대비 ~22% 향상), CPU 주파수 변동에 가려서 명확한 곡선을 관찰하기 어려움
+- 프로덕션에서는 CPU governor가 `performance`이고 부하가 지속적이므로 warm-up 후 안정적 성능을 기대할 수 있음
+- **서버리스 환경에서는 매번 콜드 스타트 → warm-up 비용이 사용자에게 직접 영향**: GraalVM Native가 유리
+
+---
+
 ## 전체 요약 — 핵심 인사이트
 
 ### 1. 고부하(1000 VU)에서 동시성 모델의 진짜 차이가 드러남
