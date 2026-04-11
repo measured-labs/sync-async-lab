@@ -108,11 +108,18 @@ py-spy record -o flamegraph.svg --pid $(pgrep -f uvicorn)
 
 ## 추가 확장 가능 주제
 
-| # | 주제 | 난이도 | 예상 소요 |
-|---|------|--------|----------|
-| 1 | Python 3.13 free-threaded (PEP 703) | 중 | 2시간 |
-| 2 | Rust (Actix-web / Tokio) 서버 추가 | 중 | 3시간 |
-| 3 | k8s HPA 오토스케일링 비교 | 높 | 1일 |
-| 4 | Grafana + InfluxDB 실시간 대시보드 | 중 | 2시간 |
-| 5 | Connection pool 크기별 성능 곡선 (10/20/50/100) | 낮 | 1시간 |
-| 6 | JVM warm-up 구간 별도 분석 | 낮 | 30분 |
+| # | 주제 | 난이도 | 예상 소요 | 상태 |
+|---|------|--------|----------|------|
+| 1 | Python 3.13 free-threaded (PEP 703) | 중 | 2시간 | ❌ Docker 이미지 미제공 |
+| 2 | Rust (Actix-web / Tokio) 서버 추가 | 중 | 3시간 | 미진행 |
+| 3 | k8s HPA 오토스케일링 비교 | 높 | 1일 | 미진행 |
+| 4 | Grafana + InfluxDB 실시간 대시보드 | 중 | 2시간 | 미진행 |
+| 5 | Connection pool 크기별 성능 곡선 (10/20/50/100) | 낮 | 1시간 | ✅ 완료 |
+| 6 | JVM warm-up 구간 별도 분석 | 낮 | 30분 | ✅ 완료 |
+
+### #1 Python 3.13 free-threaded — 미진행 사유
+
+- 공식 Docker Hub에 `python:3.13t` 또는 free-threaded 전용 이미지가 없음
+- 표준 python:3.13-slim은 `--disable-gil`로 컴파일되지 않아 `PYTHON_GIL=0` 설정 시 Fatal Error
+- 자체 빌드(소스 컴파일)는 가능하나 30분+ 소요 + 의존성 호환성 미보장
+- PEP 703 구현이 안정화되면 공식 이미지 출시 후 재시도 권장
