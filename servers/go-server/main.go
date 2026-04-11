@@ -8,6 +8,7 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
+	"golang.org/x/net/websocket"
 )
 
 var db *sql.DB
@@ -53,6 +54,21 @@ func dbHandler(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func wsHandler(ws *websocket.Conn) {
+	defer ws.Close()
+	buf := make([]byte, 4096)
+	for {
+		n, err := ws.Read(buf)
+		if err != nil {
+			return
+		}
+		_, err = ws.Write(buf[:n])
+		if err != nil {
+			return
+		}
+	}
+}
+
 func main() {
 	dbHost := os.Getenv("DB_HOST")
 	if dbHost == "" {
@@ -68,5 +84,6 @@ func main() {
 	http.HandleFunc("/io", ioHandler)
 	http.HandleFunc("/cpu", cpuHandler)
 	http.HandleFunc("/db", dbHandler)
+	http.Handle("/ws", &websocket.Server{Handler: wsHandler})
 	http.ListenAndServe(":8080", nil)
 }

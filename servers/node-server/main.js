@@ -1,7 +1,10 @@
+const http = require('http');
 const express = require('express');
 const { Pool } = require('pg');
+const { WebSocketServer } = require('ws');
 
 const app = express();
+const server = http.createServer(app);
 
 const dbHost = process.env.DB_HOST || 'postgres';
 const pool = new Pool({
@@ -29,6 +32,13 @@ app.get('/db', async (req, res) => {
   res.json({ server: 'node-express', type: 'db', delay_ms: 200 });
 });
 
-app.listen(8080, () => {
+const wss = new WebSocketServer({ server, path: '/ws' });
+wss.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    ws.send(data.toString());
+  });
+});
+
+server.listen(8080, () => {
   console.log('Node.js server listening on :8080');
 });

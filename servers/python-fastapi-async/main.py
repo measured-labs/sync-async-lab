@@ -3,7 +3,7 @@ import os
 from concurrent.futures import ProcessPoolExecutor
 
 import asyncpg
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 
 app = FastAPI()
 
@@ -52,3 +52,14 @@ async def db_endpoint():
     async with db_pool.acquire() as conn:
         await conn.fetchval("SELECT pg_sleep(0.2)")
     return {"server": "fastapi-async", "type": "db", "delay_ms": 200}
+
+
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await websocket.send_text(data)
+    except WebSocketDisconnect:
+        pass
