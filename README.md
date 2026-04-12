@@ -16,6 +16,8 @@
 | 8 | java-spring-virtual | Spring MVC + Virtual Threads | M:N 가상 스레드 | 8008 |
 | 9 | go-server | Go net/http | goroutine (M:N) | 8009 |
 | 10 | node-server | Node.js Express | 싱글 스레드 이벤트 루프 | 8010 |
+| 11 | java-spring-mvc-native | Spring MVC + GraalVM Native | AOT 컴파일 | 8011 |
+| 12 | python-fastapi-freethreaded | Starlette + Python 3.13t (no-GIL) | free-threading | 8012 |
 
 ## 엔드포인트
 
@@ -24,6 +26,9 @@
 | GET /io | I/O-bound (sleep 200ms) |
 | GET /cpu | CPU-bound (fibonacci 38) |
 | GET /db | DB I/O (PostgreSQL pg_sleep 200ms) |
+| GET /cpu-mp | CPU (ProcessPoolExecutor) — fastapi-async 전용 |
+| GET /cpu-mt | CPU (ThreadPoolExecutor, no-GIL) — freethreaded 전용 |
+| WS /ws | WebSocket 에코 — fastapi-async, webflux, go, node |
 
 ## 핵심 결과
 
@@ -48,6 +53,17 @@
 - **Go는 blocking 코드로 최상위 성능**: sync/async 구분 없이 goroutine이 자동 비동기
 - **Graceful Shutdown은 모델과 무관**: 모든 프레임워크가 0% 요청 드롭
 
+### 추가 실험 결과
+
+| 실험 | 핵심 결과 |
+|------|----------|
+| GraalVM Native Image | 콜드스타트 18.8x 빠름, 메모리 5.7x 절약, CPU 처리량 20% 낮음 |
+| ProcessPoolExecutor | GIL 우회 1.33x 향상 (IPC 오버헤드로 2x 미달) |
+| Python 3.13 free-threaded | **GIL 없이 ThreadPoolExecutor로 2.16x CPU 병렬화 성공** |
+| WebSocket 동시 연결 | Go/Node RTT ~1ms, FastAPI 1000 VU에서 29ms로 악화 |
+| Connection pool 곡선 | 풀 크기에 비례 (이론적 상한의 85~97% 달성) |
+| JVM warm-up | 첫 5회 요청 대비 ~22% 향상 (JIT C2 최적화) |
+
 ## 실행
 
 ```bash
@@ -71,7 +87,7 @@ cd k6
 ## 폴더 구조
 
 ```
-servers/          # 10개 서버 소스
+servers/          # 12개 서버 소스
 k6/               # k6 테스트 시나리오 + 실행 스크립트
 report/           # 가설 + 실험 결과 (git 추적)
   hypotheses.md         # 1차 가설 (H1-H8)
