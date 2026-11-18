@@ -245,6 +245,8 @@
 - 가설대로 CPU-bound에서는 sync/async 차이 없음.
 - Python의 GIL이 2코어 환경에서도 사실상 싱글 스레드로 동작하게 만듦.
 
+> 2026-11-18 주석: 위 표의 ~1 req/s는 성공 처리량이 아니다. python-fastapi-sync는 150건 모두(100%, `k6/results/20260405-044231/python-fastapi-sync-cpu-bound.log:744`), python-fastapi-async는 153건 중 147건(96.07%, `python-fastapi-async-cpu-bound.log:781`)이 k6 타임아웃(60초)으로 실패했다. 대부분 타임아웃이라 sync와 async의 CPU-bound 처리량은 이 측정으로 비교할 수 없다. "가설 입증" 판정과 GIL에 대한 해석은 이 측정이 뒷받침하지 않는다.
+
 #### H3: Django sync vs async+ORM (I/O-bound) — ⚠️ 예상 외 결과
 
 | 메트릭 | sync (WSGI) | async (ORM) |
@@ -337,6 +339,8 @@
 4. **Python CPU-bound는 GIL에 의해 사실상 싱글코어**: 2코어 환경에서도 ~1 req/s.
 5. **Java/Go는 CPU-bound에서 Python의 2배 이상**: GIL 없이 멀티코어 활용.
 
+> 2026-11-18 주석: 4번과 5번은 Python CPU-bound의 ~1 req/s를 근거로 삼았지만, Python 서버 5개는 요청의 96~100%가 타임아웃으로 실패했다(`k6/results/20260405-044231/python-*-cpu-bound.log`의 `http_req_failed` 줄. 예: python-fastapi-sync :744 100%, python-fastapi-async :781 96.07%). 성공 처리량이 아니므로 Python 안의 모델 비교와 "Java/Go가 Python의 2배 이상"은 비교할 수 없다(대부분 타임아웃). Java도 MVC 8.53%, WebFlux 7.51%가 실패했다.
+
 
 ## 결정 (결론)
 
@@ -345,7 +349,7 @@
 - 200 VU · 200ms 대기에서는 Go · WebFlux · MVC · FastAPI async · 가상 스레드가 모두 약 720~740 req/s로 비슷했다. Tomcat 스레드풀 200이 200 VU를 감당해 동시성 모델 차이가 드러나지 않았다(→ VU를 올린 ADR-001).
 - FastAPI는 async가 sync보다 3.9배 높은 처리량을 냈다(H1).
 - Django는 이 설정(sync: gunicorn 4 프로세스 × 50 스레드, async: uvicorn 워커 1개)에서 WSGI + gthread(sync)가 ASGI(async)보다 2.5배 빨랐고, ORM 경유 async와 raw async의 차이는 없었다(H3 · H4). 원문은 원인을 ORM이 아니라 Django ASGI 처리 자체로 봤다(→ ADR-003).
-- CPU-bound에서는 Python 서버가 모두 약 1 req/s, Java · Go가 약 2.3~2.7 req/s였다(H2 · H6 · H7). 아래 한계의 실패율을 함께 봐야 한다.
+- CPU-bound(H2 · H6 · H7)는 비교할 수 없다. Python 서버는 요청의 96~100%가 타임아웃으로 실패해(아래 한계) 원문의 약 1 req/s는 성공 처리량이 아니다. Java · Go의 약 2.3~2.7 req/s도 MVC 8.53% · WebFlux 7.51%의 실패를 포함한다.
 
 ## 한계
 

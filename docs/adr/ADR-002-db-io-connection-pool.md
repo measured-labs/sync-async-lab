@@ -72,6 +72,8 @@ sleep이 아니라 실제 DB 쿼리(PostgreSQL `pg_sleep(0.2)`)를 기다리면,
 - sleep 실험에서 3000+ req/s를 보인 Go/WebFlux가 DB에서는 ~50-97 req/s로 급락
 - **커넥션 풀 20개 × pg_sleep 200ms = 최대 100 req/s** ← 이론적 상한
 - FastAPI async만 예외적으로 954 req/s → asyncpg의 파이프라이닝 또는 커넥션 재활용이 효율적
+
+> 2026-11-18 주석: 이 해석은 철회한다. 954.6 req/s는 요청 114,614건 중 103,524건(90.32%)이 실패한 값이고(`k6/results/db-bound-20260405-084137/python-fastapi-async.log:103922`), 실패는 모두 k6 경고 `connection refused`로 08:45:18~23(UTC)에 몰려 있다. 성공한 요청만 세면 약 92 req/s로 풀 20의 이론 상한(100 req/s) 안쪽이다. asyncpg가 효율적이어서 나온 수치가 아니다.
 - Django async-raw: 94 req/s ← Django ASGI 오버헤드 + 커넥션 풀 병목
 
 **교훈: 실제 DB I/O에서는 동시성 모델보다 커넥션 풀 크기가 성능을 결정한다.**

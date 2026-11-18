@@ -41,7 +41,7 @@ Docker에 띄운 모든 서버 컨테이너. `k6/collect-stats.sh`로 `docker st
 ## 한계
 
 - 결과가 범위로 적힌 대략치다("docker stats에서 확인된 대략적 수준"). 서버별 정확한 값 · 측정 시점이 원문에 없다.
-- 작업 트리의 `results/memory-20260405-184059/docker-stats.csv`(2026-04-05 18:40:59 ~ 18:45:24, 컨테이너마다 36회)가 원문의 근거인지는 알 수 없다. 원문에 이 파일이 언급되지 않는다. 이 파일의 컨테이너별 메모리(최소~최대, MiB)는 원문 범위와 다른 곳이 있다(2026-11-18 계산):
+- 로컬 작업 트리에만 있는 `results/memory-20260405-184059/docker-stats.csv`(2026-04-05 18:40:59 ~ 18:45:24, 컨테이너마다 36회)가 원문의 근거인지는 알 수 없다. 원문에 이 파일이 언급되지 않는다. 이 파일의 컨테이너별 메모리(최소~최대, MiB)는 원문 범위와 다른 곳이 있다(2026-11-18 계산):
 
 | 원문 분류 | 원문 범위 | csv 값 (MiB) |
 |---|---|---|
@@ -50,5 +50,5 @@ Docker에 띄운 모든 서버 컨테이너. `k6/collect-stats.sh`로 `docker st
 | Python (FastAPI/Django) | ~50-80MB | fastapi-sync 48.5, fastapi-async 58.9~59.2, django-async 35.7, django-async-raw 57.4, django-sync 160.0 |
 | Java (Spring) | ~200-350MB | mvc 265.0~265.3, webflux 260.1~260.3, virtual 249.1 |
 
-  csv에는 이 랩과 무관한 컨테이너 1개와 postgres(137.2~139.6)도 들어 있다. Go · Node.js · Django sync · Django async는 원문 범위 밖이다. 원문 수치는 고치지 않았다.
+  csv에는 이 랩과 무관한 컨테이너 1개와 postgres(137.2~139.6)도 들어 있다. Go · Node.js · Django sync · Django async는 원문 범위 밖이다. 원문 수치는 고치지 않았다. 이 csv는 저장소에 올리지 않는 로컬 파일이다(다른 프로젝트의 컨테이너 이름이 섞여 있어 커밋에서 뺐다). 그래서 공개 저장소의 독자는 위 비교표를 다시 확인할 수 없다.
 - 부하 중 메모리는 Node.js I/O 테스트 중 한 번 모은 것이다. 서버마다 자기 부하를 받을 때의 메모리는 아니다. WebSocket 1000 연결 중 메모리는 [ADR-008](ADR-008-websocket.md)에 있다.

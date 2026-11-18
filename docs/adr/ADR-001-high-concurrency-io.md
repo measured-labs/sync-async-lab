@@ -55,13 +55,15 @@ ADR-000의 서버 중 python-django-async(ORM)를 뺀 8개: python-fastapi-sync,
 #### 가설 검증: ✅ 입증
 
 - **Java MVC**: 200 스레드풀이 500/1000 VU에서 포화됨. p95 = 1004ms (큐잉 확인).
-- **WebFlux**: 3161 req/s — VU 1000에서도 p95 = 212ms로 안정적.
+- **WebFlux**: 3161 req/s — 500→1000 VU 단계 시나리오 전체에서 p95 = 212ms로 안정적.
 - **Virtual Threads**: 2333 req/s — WebFlux보다 약간 낮지만 MVC보다 2.4배 빠름.
 - **Go**: 3180 req/s — WebFlux와 동급 최상위.
 - **FastAPI async**: 1558 req/s — Python에서 최고. 하지만 Go/WebFlux의 절반 수준.
 - **FastAPI sync**: 196 req/s — 스레드풀 ~40이 완전히 포화.
 
-#### I/O-bound 최종 순위 (1000 VU)
+> 2026-11-18 주석: 원문의 "VU 1000에서도 p95 = 212ms"를 위처럼 바꿨다. 이 시나리오는 VU를 500에서 1000으로 올리는 단계형이고, p95와 req/s는 3분 30초 전체에서 집계한 값이다. 1000 VU 구간만의 응답 시간은 따로 없다.
+
+#### I/O-bound 최종 순위 (500→1000 VU 단계 시나리오 전체)
 
 | 순위 | 서버 | req/s | 동시성 모델 |
 |------|------|------:|------------|
@@ -73,6 +75,8 @@ ADR-000의 서버 중 python-django-async(ORM)를 뺀 8개: python-fastapi-sync,
 | 6 | Django sync | 942.9 | gthread 200 (포화) |
 | 7 | Django async-raw | 281.9 | ASGI 오버헤드 |
 | 8 | FastAPI sync | 195.9 | 스레드풀 ~40 (극심한 포화) |
+
+> 2026-11-18 주석: 원문 표 제목은 "I/O-bound 최종 순위 (1000 VU)"였다. 값은 500→1000 VU 단계 시나리오 전체의 평균이다. 1000 VU 유지 구간만의 추정치는 아래 한계 절의 구간별 표에 있다.
 
 
 2026-11-18 확인: k6 원본 로그 `k6/results/high-concurrency-20260405-074723/*.log`(667~668행)에서 8개 서버 모두 `http_req_failed` 0.00%이고, req/s가 위 표와 같다.
