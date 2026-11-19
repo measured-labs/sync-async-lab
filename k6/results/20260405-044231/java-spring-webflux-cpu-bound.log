@@ -1,0 +1,539 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: ./scenarios/cpu-bound.js
+        output: -
+
+     scenarios: (100.00%) 1 scenario, 100 max VUs, 2m30s max duration (incl. graceful stop):
+              * default: Up to 100 looping VUs for 2m0s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+
+
+running (0m01.0s), 004/100 VUs, 2 complete and 0 interrupted iterations
+default   [   1% ] 004/100 VUs  0m01.0s/2m00.0s
+
+running (0m02.0s), 007/100 VUs, 3 complete and 0 interrupted iterations
+default   [   2% ] 007/100 VUs  0m02.0s/2m00.0s
+
+running (0m03.0s), 010/100 VUs, 6 complete and 0 interrupted iterations
+default   [   2% ] 010/100 VUs  0m03.0s/2m00.0s
+
+running (0m04.0s), 014/100 VUs, 7 complete and 0 interrupted iterations
+default   [   3% ] 014/100 VUs  0m04.0s/2m00.0s
+
+running (0m05.0s), 017/100 VUs, 11 complete and 0 interrupted iterations
+default   [   4% ] 017/100 VUs  0m05.0s/2m00.0s
+
+running (0m06.0s), 020/100 VUs, 14 complete and 0 interrupted iterations
+default   [   5% ] 020/100 VUs  0m06.0s/2m00.0s
+
+running (0m07.0s), 024/100 VUs, 18 complete and 0 interrupted iterations
+default   [   6% ] 024/100 VUs  0m07.0s/2m00.0s
+
+running (0m08.0s), 027/100 VUs, 19 complete and 0 interrupted iterations
+default   [   7% ] 027/100 VUs  0m08.0s/2m00.0s
+
+running (0m09.0s), 030/100 VUs, 22 complete and 0 interrupted iterations
+default   [   7% ] 030/100 VUs  0m09.0s/2m00.0s
+
+running (0m10.0s), 033/100 VUs, 24 complete and 0 interrupted iterations
+default   [   8% ] 033/100 VUs  0m10.0s/2m00.0s
+
+running (0m11.0s), 037/100 VUs, 27 complete and 0 interrupted iterations
+default   [   9% ] 037/100 VUs  0m11.0s/2m00.0s
+
+running (0m12.0s), 040/100 VUs, 30 complete and 0 interrupted iterations
+default   [  10% ] 040/100 VUs  0m12.0s/2m00.0s
+
+running (0m13.0s), 043/100 VUs, 32 complete and 0 interrupted iterations
+default   [  11% ] 043/100 VUs  0m13.0s/2m00.0s
+
+running (0m14.0s), 047/100 VUs, 35 complete and 0 interrupted iterations
+default   [  12% ] 047/100 VUs  0m14.0s/2m00.0s
+
+running (0m15.0s), 050/100 VUs, 38 complete and 0 interrupted iterations
+default   [  12% ] 050/100 VUs  0m15.0s/2m00.0s
+
+running (0m16.0s), 053/100 VUs, 41 complete and 0 interrupted iterations
+default   [  13% ] 053/100 VUs  0m16.0s/2m00.0s
+
+running (0m17.0s), 057/100 VUs, 43 complete and 0 interrupted iterations
+default   [  14% ] 057/100 VUs  0m17.0s/2m00.0s
+
+running (0m18.0s), 060/100 VUs, 46 complete and 0 interrupted iterations
+default   [  15% ] 060/100 VUs  0m18.0s/2m00.0s
+
+running (0m19.0s), 063/100 VUs, 49 complete and 0 interrupted iterations
+default   [  16% ] 063/100 VUs  0m19.0s/2m00.0s
+
+running (0m20.0s), 066/100 VUs, 51 complete and 0 interrupted iterations
+default   [  17% ] 066/100 VUs  0m20.0s/2m00.0s
+
+running (0m21.0s), 070/100 VUs, 54 complete and 0 interrupted iterations
+default   [  17% ] 070/100 VUs  0m21.0s/2m00.0s
+
+running (0m22.0s), 073/100 VUs, 55 complete and 0 interrupted iterations
+default   [  18% ] 073/100 VUs  0m22.0s/2m00.0s
+
+running (0m23.0s), 076/100 VUs, 59 complete and 0 interrupted iterations
+default   [  19% ] 076/100 VUs  0m23.0s/2m00.0s
+
+running (0m24.0s), 080/100 VUs, 62 complete and 0 interrupted iterations
+default   [  20% ] 080/100 VUs  0m24.0s/2m00.0s
+
+running (0m25.0s), 083/100 VUs, 63 complete and 0 interrupted iterations
+default   [  21% ] 083/100 VUs  0m25.0s/2m00.0s
+
+running (0m26.0s), 086/100 VUs, 66 complete and 0 interrupted iterations
+default   [  22% ] 086/100 VUs  0m26.0s/2m00.0s
+
+running (0m27.0s), 090/100 VUs, 70 complete and 0 interrupted iterations
+default   [  22% ] 090/100 VUs  0m27.0s/2m00.0s
+
+running (0m28.0s), 093/100 VUs, 71 complete and 0 interrupted iterations
+default   [  23% ] 093/100 VUs  0m28.0s/2m00.0s
+
+running (0m29.0s), 096/100 VUs, 74 complete and 0 interrupted iterations
+default   [  24% ] 096/100 VUs  0m29.0s/2m00.0s
+
+running (0m30.0s), 099/100 VUs, 75 complete and 0 interrupted iterations
+default   [  25% ] 099/100 VUs  0m30.0s/2m00.0s
+
+running (0m31.0s), 100/100 VUs, 79 complete and 0 interrupted iterations
+default   [  26% ] 100/100 VUs  0m31.0s/2m00.0s
+
+running (0m32.0s), 100/100 VUs, 82 complete and 0 interrupted iterations
+default   [  27% ] 100/100 VUs  0m32.0s/2m00.0s
+
+running (0m33.0s), 100/100 VUs, 83 complete and 0 interrupted iterations
+default   [  27% ] 100/100 VUs  0m33.0s/2m00.0s
+
+running (0m34.0s), 100/100 VUs, 87 complete and 0 interrupted iterations
+default   [  28% ] 100/100 VUs  0m34.0s/2m00.0s
+
+running (0m35.0s), 100/100 VUs, 90 complete and 0 interrupted iterations
+default   [  29% ] 100/100 VUs  0m35.0s/2m00.0s
+
+running (0m36.0s), 100/100 VUs, 91 complete and 0 interrupted iterations
+default   [  30% ] 100/100 VUs  0m36.0s/2m00.0s
+
+running (0m37.0s), 100/100 VUs, 94 complete and 0 interrupted iterations
+default   [  31% ] 100/100 VUs  0m37.0s/2m00.0s
+
+running (0m38.0s), 100/100 VUs, 97 complete and 0 interrupted iterations
+default   [  32% ] 100/100 VUs  0m38.0s/2m00.0s
+
+running (0m39.0s), 100/100 VUs, 99 complete and 0 interrupted iterations
+default   [  32% ] 100/100 VUs  0m39.0s/2m00.0s
+
+running (0m40.0s), 100/100 VUs, 102 complete and 0 interrupted iterations
+default   [  33% ] 100/100 VUs  0m40.0s/2m00.0s
+
+running (0m41.0s), 100/100 VUs, 104 complete and 0 interrupted iterations
+default   [  34% ] 100/100 VUs  0m41.0s/2m00.0s
+
+running (0m42.0s), 100/100 VUs, 107 complete and 0 interrupted iterations
+default   [  35% ] 100/100 VUs  0m42.0s/2m00.0s
+
+running (0m43.0s), 100/100 VUs, 110 complete and 0 interrupted iterations
+default   [  36% ] 100/100 VUs  0m43.0s/2m00.0s
+
+running (0m44.0s), 100/100 VUs, 111 complete and 0 interrupted iterations
+default   [  37% ] 100/100 VUs  0m44.0s/2m00.0s
+
+running (0m45.0s), 100/100 VUs, 114 complete and 0 interrupted iterations
+default   [  37% ] 100/100 VUs  0m45.0s/2m00.0s
+
+running (0m46.0s), 100/100 VUs, 116 complete and 0 interrupted iterations
+default   [  38% ] 100/100 VUs  0m46.0s/2m00.0s
+
+running (0m47.0s), 100/100 VUs, 119 complete and 0 interrupted iterations
+default   [  39% ] 100/100 VUs  0m47.0s/2m00.0s
+
+running (0m48.0s), 100/100 VUs, 122 complete and 0 interrupted iterations
+default   [  40% ] 100/100 VUs  0m48.0s/2m00.0s
+
+running (0m49.0s), 100/100 VUs, 123 complete and 0 interrupted iterations
+default   [  41% ] 100/100 VUs  0m49.0s/2m00.0s
+
+running (0m50.0s), 100/100 VUs, 126 complete and 0 interrupted iterations
+default   [  42% ] 100/100 VUs  0m50.0s/2m00.0s
+
+running (0m51.0s), 100/100 VUs, 129 complete and 0 interrupted iterations
+default   [  42% ] 100/100 VUs  0m51.0s/2m00.0s
+
+running (0m52.0s), 100/100 VUs, 131 complete and 0 interrupted iterations
+default   [  43% ] 100/100 VUs  0m52.0s/2m00.0s
+
+running (0m53.0s), 100/100 VUs, 134 complete and 0 interrupted iterations
+default   [  44% ] 100/100 VUs  0m53.0s/2m00.0s
+
+running (0m54.0s), 100/100 VUs, 135 complete and 0 interrupted iterations
+default   [  45% ] 100/100 VUs  0m54.0s/2m00.0s
+
+running (0m55.0s), 100/100 VUs, 138 complete and 0 interrupted iterations
+default   [  46% ] 100/100 VUs  0m55.0s/2m00.0s
+
+running (0m56.0s), 100/100 VUs, 140 complete and 0 interrupted iterations
+default   [  47% ] 100/100 VUs  0m56.0s/2m00.0s
+
+running (0m57.0s), 100/100 VUs, 143 complete and 0 interrupted iterations
+default   [  47% ] 100/100 VUs  0m57.0s/2m00.0s
+
+running (0m58.0s), 100/100 VUs, 146 complete and 0 interrupted iterations
+default   [  48% ] 100/100 VUs  0m58.0s/2m00.0s
+
+running (0m59.0s), 100/100 VUs, 147 complete and 0 interrupted iterations
+default   [  49% ] 100/100 VUs  0m59.0s/2m00.0s
+
+running (1m00.0s), 100/100 VUs, 150 complete and 0 interrupted iterations
+default   [  50% ] 100/100 VUs  1m00.0s/2m00.0s
+
+running (1m01.0s), 100/100 VUs, 154 complete and 0 interrupted iterations
+default   [  51% ] 100/100 VUs  1m01.0s/2m00.0s
+
+running (1m02.0s), 100/100 VUs, 155 complete and 0 interrupted iterations
+default   [  52% ] 100/100 VUs  1m02.0s/2m00.0s
+
+running (1m03.0s), 100/100 VUs, 158 complete and 0 interrupted iterations
+default   [  52% ] 100/100 VUs  1m03.0s/2m00.0s
+
+running (1m04.0s), 100/100 VUs, 159 complete and 0 interrupted iterations
+default   [  53% ] 100/100 VUs  1m04.0s/2m00.0s
+
+running (1m05.0s), 100/100 VUs, 163 complete and 0 interrupted iterations
+default   [  54% ] 100/100 VUs  1m05.0s/2m00.0s
+
+running (1m06.0s), 100/100 VUs, 165 complete and 0 interrupted iterations
+default   [  55% ] 100/100 VUs  1m06.0s/2m00.0s
+
+running (1m07.0s), 100/100 VUs, 167 complete and 0 interrupted iterations
+default   [  56% ] 100/100 VUs  1m07.0s/2m00.0s
+
+running (1m08.0s), 100/100 VUs, 170 complete and 0 interrupted iterations
+default   [  57% ] 100/100 VUs  1m08.0s/2m00.0s
+
+running (1m09.0s), 100/100 VUs, 173 complete and 0 interrupted iterations
+default   [  57% ] 100/100 VUs  1m09.0s/2m00.0s
+
+running (1m10.0s), 100/100 VUs, 175 complete and 0 interrupted iterations
+default   [  58% ] 100/100 VUs  1m10.0s/2m00.0s
+
+running (1m11.0s), 100/100 VUs, 178 complete and 0 interrupted iterations
+default   [  59% ] 100/100 VUs  1m11.0s/2m00.0s
+
+running (1m12.0s), 100/100 VUs, 181 complete and 0 interrupted iterations
+default   [  60% ] 100/100 VUs  1m12.0s/2m00.0s
+
+running (1m13.0s), 100/100 VUs, 183 complete and 0 interrupted iterations
+default   [  61% ] 100/100 VUs  1m13.0s/2m00.0s
+
+running (1m14.0s), 100/100 VUs, 186 complete and 0 interrupted iterations
+default   [  62% ] 100/100 VUs  1m14.0s/2m00.0s
+
+running (1m15.0s), 100/100 VUs, 189 complete and 0 interrupted iterations
+default   [  62% ] 100/100 VUs  1m15.0s/2m00.0s
+
+running (1m16.0s), 100/100 VUs, 191 complete and 0 interrupted iterations
+default   [  63% ] 100/100 VUs  1m16.0s/2m00.0s
+
+running (1m17.0s), 100/100 VUs, 194 complete and 0 interrupted iterations
+default   [  64% ] 100/100 VUs  1m17.0s/2m00.0s
+
+running (1m18.0s), 100/100 VUs, 197 complete and 0 interrupted iterations
+default   [  65% ] 100/100 VUs  1m18.0s/2m00.0s
+time="2026-04-05T05:14:12Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:12Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:13Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:13Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m19.0s), 100/100 VUs, 201 complete and 0 interrupted iterations
+default   [  66% ] 100/100 VUs  1m19.0s/2m00.0s
+time="2026-04-05T05:14:14Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:14Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m20.0s), 100/100 VUs, 204 complete and 0 interrupted iterations
+default   [  67% ] 100/100 VUs  1m20.0s/2m00.0s
+time="2026-04-05T05:14:14Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:14Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:15Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:15Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m21.0s), 100/100 VUs, 207 complete and 0 interrupted iterations
+default   [  67% ] 100/100 VUs  1m21.0s/2m00.0s
+time="2026-04-05T05:14:15Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:15Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:16Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:16Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m22.0s), 100/100 VUs, 211 complete and 0 interrupted iterations
+default   [  68% ] 100/100 VUs  1m22.0s/2m00.0s
+time="2026-04-05T05:14:17Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:17Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m23.0s), 100/100 VUs, 213 complete and 0 interrupted iterations
+default   [  69% ] 100/100 VUs  1m23.0s/2m00.0s
+time="2026-04-05T05:14:17Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:17Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:18Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:18Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:18Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:18Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m24.0s), 100/100 VUs, 217 complete and 0 interrupted iterations
+default   [  70% ] 100/100 VUs  1m24.0s/2m00.0s
+time="2026-04-05T05:14:18Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:18Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:19Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:19Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m25.0s), 100/100 VUs, 220 complete and 0 interrupted iterations
+default   [  71% ] 100/100 VUs  1m25.0s/2m00.0s
+time="2026-04-05T05:14:19Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:19Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:20Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:20Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m26.0s), 100/100 VUs, 222 complete and 0 interrupted iterations
+default   [  72% ] 100/100 VUs  1m26.0s/2m00.0s
+time="2026-04-05T05:14:20Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:20Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:21Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:21Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:21Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:21Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m27.0s), 100/100 VUs, 227 complete and 0 interrupted iterations
+default   [  72% ] 100/100 VUs  1m27.0s/2m00.0s
+time="2026-04-05T05:14:22Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:22Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:22Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:22Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:22Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:22Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m28.0s), 100/100 VUs, 231 complete and 0 interrupted iterations
+default   [  73% ] 100/100 VUs  1m28.0s/2m00.0s
+time="2026-04-05T05:14:23Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:23Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:23Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:23Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m29.0s), 100/100 VUs, 234 complete and 0 interrupted iterations
+default   [  74% ] 100/100 VUs  1m29.0s/2m00.0s
+time="2026-04-05T05:14:23Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:23Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+time="2026-04-05T05:14:24Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:24Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m30.0s), 100/100 VUs, 237 complete and 0 interrupted iterations
+default   [  75% ] 100/100 VUs  1m30.0s/2m00.0s
+time="2026-04-05T05:14:24Z" level=warning msg="Request Failed" error="Get \"http://192.168.55.114:8007/cpu\": request timeout"
+time="2026-04-05T05:14:24Z" level=error msg="TypeError: Cannot read property 'fibonacci' of undefined\n\tat has fibonacci field (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:24:54(6))\n\tat go.k6.io/k6/internal/js/modules/k6.(*K6).Check-fm (native)\n\tat default (file:///home/jun/sync-async-lab/k6/scenarios/cpu-bound.js:22:8(17))\n" executor=ramping-vus scenario=default source=stacktrace
+
+running (1m31.0s), 100/100 VUs, 239 complete and 0 interrupted iterations
+default   [  76% ] 100/100 VUs  1m31.0s/2m00.0s
+
+running (1m32.0s), 100/100 VUs, 239 complete and 0 interrupted iterations
+default   [  77% ] 100/100 VUs  1m32.0s/2m00.0s
+
+running (1m33.0s), 100/100 VUs, 240 complete and 0 interrupted iterations
+default   [  77% ] 100/100 VUs  1m33.0s/2m00.0s
+
+running (1m34.0s), 100/100 VUs, 242 complete and 0 interrupted iterations
+default   [  78% ] 100/100 VUs  1m34.0s/2m00.0s
+
+running (1m35.0s), 100/100 VUs, 243 complete and 0 interrupted iterations
+default   [  79% ] 100/100 VUs  1m35.0s/2m00.0s
+
+running (1m36.0s), 100/100 VUs, 245 complete and 0 interrupted iterations
+default   [  80% ] 100/100 VUs  1m36.0s/2m00.0s
+
+running (1m37.0s), 100/100 VUs, 247 complete and 0 interrupted iterations
+default   [  81% ] 100/100 VUs  1m37.0s/2m00.0s
+
+running (1m38.0s), 100/100 VUs, 251 complete and 0 interrupted iterations
+default   [  82% ] 100/100 VUs  1m38.0s/2m00.0s
+
+running (1m39.0s), 100/100 VUs, 253 complete and 0 interrupted iterations
+default   [  82% ] 100/100 VUs  1m39.0s/2m00.0s
+
+running (1m40.0s), 100/100 VUs, 255 complete and 0 interrupted iterations
+default   [  83% ] 100/100 VUs  1m40.0s/2m00.0s
+
+running (1m41.0s), 100/100 VUs, 257 complete and 0 interrupted iterations
+default   [  84% ] 100/100 VUs  1m41.0s/2m00.0s
+
+running (1m42.0s), 100/100 VUs, 259 complete and 0 interrupted iterations
+default   [  85% ] 100/100 VUs  1m42.0s/2m00.0s
+
+running (1m43.0s), 100/100 VUs, 263 complete and 0 interrupted iterations
+default   [  86% ] 100/100 VUs  1m43.0s/2m00.0s
+
+running (1m44.0s), 100/100 VUs, 265 complete and 0 interrupted iterations
+default   [  87% ] 100/100 VUs  1m44.0s/2m00.0s
+
+running (1m45.0s), 100/100 VUs, 267 complete and 0 interrupted iterations
+default   [  87% ] 100/100 VUs  1m45.0s/2m00.0s
+
+running (1m46.0s), 100/100 VUs, 269 complete and 0 interrupted iterations
+default   [  88% ] 100/100 VUs  1m46.0s/2m00.0s
+
+running (1m47.0s), 100/100 VUs, 271 complete and 0 interrupted iterations
+default   [  89% ] 100/100 VUs  1m47.0s/2m00.0s
+
+running (1m48.0s), 099/100 VUs, 275 complete and 0 interrupted iterations
+default   [  90% ] 099/100 VUs  1m48.0s/2m00.0s
+
+running (1m49.0s), 098/100 VUs, 277 complete and 0 interrupted iterations
+default   [  91% ] 098/100 VUs  1m49.0s/2m00.0s
+
+running (1m50.0s), 097/100 VUs, 279 complete and 0 interrupted iterations
+default   [  92% ] 097/100 VUs  1m50.0s/2m00.0s
+
+running (1m51.0s), 093/100 VUs, 283 complete and 0 interrupted iterations
+default   [  92% ] 093/100 VUs  1m51.0s/2m00.0s
+
+running (1m52.0s), 092/100 VUs, 284 complete and 0 interrupted iterations
+default   [  93% ] 092/100 VUs  1m52.0s/2m00.0s
+
+running (1m53.0s), 089/100 VUs, 287 complete and 0 interrupted iterations
+default   [  94% ] 089/100 VUs  1m53.0s/2m00.0s
+
+running (1m54.0s), 087/100 VUs, 289 complete and 0 interrupted iterations
+default   [  95% ] 087/100 VUs  1m54.0s/2m00.0s
+
+running (1m55.0s), 085/100 VUs, 291 complete and 0 interrupted iterations
+default   [  96% ] 085/100 VUs  1m55.0s/2m00.0s
+
+running (1m56.0s), 081/100 VUs, 295 complete and 0 interrupted iterations
+default   [  97% ] 081/100 VUs  1m56.0s/2m00.0s
+
+running (1m57.0s), 079/100 VUs, 297 complete and 0 interrupted iterations
+default   [  97% ] 079/100 VUs  1m57.0s/2m00.0s
+
+running (1m58.0s), 077/100 VUs, 299 complete and 0 interrupted iterations
+default   [  98% ] 077/100 VUs  1m58.0s/2m00.0s
+
+running (1m59.0s), 073/100 VUs, 303 complete and 0 interrupted iterations
+default   [  99% ] 073/100 VUs  1m59.0s/2m00.0s
+
+running (2m00.0s), 071/100 VUs, 305 complete and 0 interrupted iterations
+default   [ 100% ] 071/100 VUs  2m00.0s/2m00.0s
+
+running (2m01.0s), 066/100 VUs, 307 complete and 3 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m02.0s), 059/100 VUs, 311 complete and 6 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m03.0s), 054/100 VUs, 313 complete and 9 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m04.0s), 050/100 VUs, 314 complete and 12 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m05.0s), 045/100 VUs, 317 complete and 14 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m06.0s), 041/100 VUs, 319 complete and 16 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m07.0s), 036/100 VUs, 321 complete and 19 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m08.0s), 030/100 VUs, 325 complete and 21 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m09.0s), 027/100 VUs, 327 complete and 22 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m10.0s), 023/100 VUs, 329 complete and 24 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m11.0s), 017/100 VUs, 333 complete and 26 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m12.0s), 014/100 VUs, 335 complete and 27 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m13.0s), 011/100 VUs, 337 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m14.0s), 009/100 VUs, 339 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m15.0s), 009/100 VUs, 339 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m16.0s), 007/100 VUs, 341 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m17.0s), 006/100 VUs, 342 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m18.0s), 006/100 VUs, 342 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m19.0s), 005/100 VUs, 343 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m20.0s), 005/100 VUs, 343 complete and 28 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m21.0s), 003/100 VUs, 344 complete and 29 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m22.0s), 001/100 VUs, 345 complete and 30 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+running (2m23.0s), 001/100 VUs, 345 complete and 30 interrupted iterations
+default ↓ [ 100% ] 071/100 VUs  2m0s
+
+
+  █ THRESHOLDS 
+
+    http_req_duration
+    ✗ 'p(95)<10000' p(95)=59.99s
+
+    http_req_failed
+    ✗ 'rate<0.01' rate=7.51%
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 692    4.836564/s
+    checks_succeeded...: 92.48% 640 out of 692
+    checks_failed......: 7.51%  52 out of 692
+
+    ✗ status is 200
+      ↳  92% — ✓ 320 / ✗ 26
+    ✗ has fibonacci field
+      ↳  92% — ✓ 320 / ✗ 26
+
+    HTTP
+    http_req_duration..............: avg=27.98s min=664.94ms med=24.4s  max=1m0s   p(90)=54.65s p(95)=59.99s
+      { expected_response:true }...: avg=25.38s min=664.94ms med=23.95s max=58.37s p(90)=39.17s p(95)=39.87s
+    http_req_failed................: 7.51% 26 out of 346
+    http_reqs......................: 346   2.418282/s
+
+    EXECUTION
+    iteration_duration.............: avg=27.98s min=666.49ms med=24.4s  max=1m0s   p(90)=54.65s p(95)=1m0s  
+    iterations.....................: 346   2.418282/s
+    vus............................: 1     min=1         max=100
+    vus_max........................: 100   min=100       max=100
+
+    NETWORK
+    data_received..................: 42 kB 295 B/s
+    data_sent......................: 29 kB 205 B/s
+
+
+
+
+running (2m23.1s), 000/100 VUs, 346 complete and 30 interrupted iterations
+default ✓ [ 100% ] 000/100 VUs  2m0s
+time="2026-04-05T05:15:18Z" level=error msg="thresholds on metrics 'http_req_duration, http_req_failed' have been crossed"
